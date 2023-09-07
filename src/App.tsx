@@ -1,18 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useRef } from "react";
 import "./App.css";
 import { ExcelRenderer } from "react-excel-renderer";
 import TableRenderer from "./components/TableRenderer";
-import * as animationData from "./assets/upload-anim.json";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 function App() {
-  const UploadRef = useRef<React.LegacyRef<HTMLInputElement>>(null);
+  const UploadRef = useRef<any>(null);
   const [file, setFile] = useState({});
   const [fileUploaded, setFileUploaded] = useState(false);
   const handleFileBrowse = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const excel = e.target.files[0];
-      ExcelRenderer(excel, (err, resp) => {
+      ExcelRenderer(excel, (err: any, resp: any) => {
         if (err) return;
         else {
           setFile({
@@ -29,20 +29,16 @@ function App() {
     setFile({});
     setFileUploaded(false);
   };
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
+
+  const handleUploadClick = () => {
+    UploadRef.current?.click();
   };
 
   return (
     <div id="root" className="bg-slate-200 justify-center items-center flex">
       {!fileUploaded && (
         <div
-          onClick={() => UploadRef.current?.click()}
+          onClick={handleUploadClick}
           className="border-dashed border-2 border-cyan-600 p-20 flex items-center justify-center hover:cursor-pointer flex-col"
         >
           <Player

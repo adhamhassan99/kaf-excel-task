@@ -1,11 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import EmployeeStatistics from "./EmployeeStatistics";
 
 type Props = {
-  excelFile: {
-    cols?: string[];
-    rows?: number[][];
-  };
+  excelFile: any;
   resetFile: () => void;
 };
 
@@ -20,11 +18,11 @@ function TableRenderer({ excelFile, resetFile }: Props) {
   return (
     <div className="flex w-full justify-between px-10">
       <div className="grid grid-cols-3  ">
-        {excelFile.cols?.map((item) => (
+        {excelFile.cols?.map((item: any) => (
           <div className="text-center px-3">{item}</div>
         ))}
-        {excelFile.rows?.map((item, index) => {
-          return item.map((item) => (
+        {excelFile.rows?.map((item: any, index: any) => {
+          return item.map((item: any) => (
             <div
               onClick={() => handleClick(index)}
               className={` py-2 text-center   ${
