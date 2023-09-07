@@ -27,10 +27,12 @@ function TableRenderer({ excelFile, resetFile }: Props) {
           return item.map((item) => (
             <div
               onClick={() => handleClick(index)}
-              className={`${
-                index % 2 === 0 ? "bg-white" : "bg-slate-100"
-              } py-2 text-center   ${
-                selectedEmployee === index ? "bg-slate-600 text-white" : ""
+              className={` py-2 text-center   ${
+                selectedEmployee === index
+                  ? "bg-slate-600 text-white"
+                  : index % 2 === 0
+                  ? "bg-white"
+                  : "bg-slate-100"
               } capitalize`}
             >
               {item}

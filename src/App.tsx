@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./App.css";
 import { ExcelRenderer } from "react-excel-renderer";
 import TableRenderer from "./components/TableRenderer";
+import * as animationData from "./assets/upload-anim.json";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 function App() {
+  const UploadRef = useRef<React.LegacyRef<HTMLInputElement>>(null);
   const [file, setFile] = useState({});
   const [fileUploaded, setFileUploaded] = useState(false);
   const handleFileBrowse = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,12 +29,35 @@ function App() {
     setFile({});
     setFileUploaded(false);
   };
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <div id="root" className="bg-slate-200 justify-center items-center flex">
       {!fileUploaded && (
-        <div className="border-dashed border-2 border-cyan-600 p-20 flex items-center justify-center">
+        <div
+          onClick={() => UploadRef.current?.click()}
+          className="border-dashed border-2 border-cyan-600 p-20 flex items-center justify-center hover:cursor-pointer flex-col"
+        >
+          <Player
+            className="w-40"
+            loop
+            autoplay
+            src={
+              "https://lottie.host/f805f053-a4bf-4068-a288-0fb0f4c4bf68/ss03uU18qo.json"
+            }
+          />
+          <div className="">Upload your .xls or .xlsx</div>
+
           <input
-            className=""
+            ref={UploadRef}
+            className="absolute hidden"
             onChange={handleFileBrowse}
             type="file"
             id="myFile"
