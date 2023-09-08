@@ -35,7 +35,7 @@ function App() {
   };
 
   return (
-    <div id="root" className="bg-slate-200 justify-center items-center flex">
+    <div id="root" className="bg-slate-100 justify-center items-center flex">
       {!fileUploaded && (
         <div
           onClick={handleUploadClick}

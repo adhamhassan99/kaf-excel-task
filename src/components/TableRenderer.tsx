@@ -41,6 +41,7 @@ function TableRenderer({ excelFile, resetFile }: Props) {
       <div className=" flex flex-col flex-1 justify-center items-center">
         {selectedEmployee !== -1 && (
           <EmployeeStatistics
+            name={excelFile.rows[selectedEmployee][0]}
             percentage={excelFile.rows[selectedEmployee][2]}
             salary={excelFile.rows[selectedEmployee][1]}
           />
