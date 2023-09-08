@@ -28,16 +28,6 @@ function EmployeeStatistics({ percentage, salary }: Props) {
       <div className="shadow-xl bg-white py-9 px-7 rounded-2xl flex flex-col items-center">
         <Doughnut data={data} />
         <div className="mt-4 w-full space-y-2">
-          {/* <span className="capitalize text-xl">{name}</span>'s base salary is{" "}
-          <b>{salary}</b>
-          <div className="">
-            Allowed loan value is{" "}
-            <b>{((percentage / 100) * salary).toFixed()}</b>
-          </div>
-          <div className="">
-            Total money employee will receive is{" "}
-            <b>{(salary + (percentage / 100) * salary).toFixed()}</b>
-          </div> */}
           <StatisticsDetail
             textColor="hotRed"
             title="Base Salary"
