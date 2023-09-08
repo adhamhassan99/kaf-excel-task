@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import StatisticsDetail from "./StatisticsDetail";
 
 type Props = {
   salary: number;
@@ -26,8 +27,8 @@ function EmployeeStatistics({ percentage, salary, name }: Props) {
     <div className="flex-1 flex items-center mb-8 ">
       <div className="shadow-xl bg-white py-9 px-7 rounded-2xl flex flex-col items-center">
         <Doughnut data={data} />
-        <div className="mt-4">
-          <span className="capitalize text-xl">{name}</span>'s base salary is{" "}
+        <div className="mt-4 w-full space-y-2">
+          {/* <span className="capitalize text-xl">{name}</span>'s base salary is{" "}
           <b>{salary}</b>
           <div className="">
             Allowed loan value is{" "}
@@ -36,7 +37,22 @@ function EmployeeStatistics({ percentage, salary, name }: Props) {
           <div className="">
             Total money employee will receive is{" "}
             <b>{(salary + (percentage / 100) * salary).toFixed()}</b>
-          </div>
+          </div> */}
+          <StatisticsDetail
+            textColor="hotRed"
+            title="Base Salary"
+            value={salary}
+          />
+          <StatisticsDetail
+            textColor="hotBlue"
+            title={`${percentage}% from salary`}
+            value={((percentage / 100) * salary).toFixed()}
+          />
+          <StatisticsDetail
+            textColor="green-600"
+            title={`Total money`}
+            value={((percentage / 100) * salary + salary).toFixed()}
+          />
         </div>
       </div>
     </div>

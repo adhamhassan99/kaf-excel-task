@@ -6,6 +6,8 @@ export default {
       colors: {
         tableHead: "#eceef2",
         darkRow: "#f9fafc",
+        hotRed: "rgba(255, 99, 132, 1)",
+        hotBlue: "rgba(54, 162, 235, 1)",
       },
     },
   },
