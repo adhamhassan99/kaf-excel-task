@@ -9,7 +9,7 @@ type Props = {
 };
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function EmployeeStatistics({ percentage, salary, name }: Props) {
+function EmployeeStatistics({ percentage, salary }: Props) {
   const data = {
     labels: ["Salary", "loan"],
 
